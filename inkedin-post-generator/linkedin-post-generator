@@ -1,0 +1,202 @@
+{
+  "name": "Linkedin post without image",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 10
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        0,
+        0
+      ],
+      "id": "2a8d7694-4e51-402e-903b-fe984df4c69d",
+      "name": "Daily 10 am"
+    },
+    {
+      "parameters": {
+        "person": "vWO0kVXYF4",
+        "text": "={{ $json.content.parts[0].text }}",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.linkedIn",
+      "typeVersion": 1,
+      "position": [
+        1024,
+        0
+      ],
+      "id": "4b8da260-24de-4d25-a96b-d41740b2bae8",
+      "name": "Create a post",
+      "credentials": {
+        "linkedInOAuth2Api": {
+          "id": "UEuthSbuvEDytsdv",
+          "name": "Valeed Linkedin"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "models/gemini-3-pro-preview",
+          "mode": "list",
+          "cachedResultName": "models/gemini-3-pro-preview"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "You are an expert in generating trending topics, Generate relevant and recent specific topic related to AI for Corporate Administration. The output should only contain topic, no other text nor characters."
+            }
+          ]
+        },
+        "builtInTools": {},
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.googleGemini",
+      "typeVersion": 1.2,
+      "position": [
+        224,
+        0
+      ],
+      "id": "64841c76-2a41-4f7e-948d-a3808a756529",
+      "name": "Message a model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "o0PVezayI78zSPbf",
+          "name": "valeedrazak"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "models/gemini-2.5-flash",
+          "mode": "list",
+          "cachedResultName": "models/gemini-2.5-flash"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=Topic: {{ $json.content.parts[0].text }}"
+            }
+          ]
+        },
+        "builtInTools": {},
+        "options": {
+          "systemMessage": "You are an expert Linkedin content writer. Generate a professional and engaging LinkedIn post related to the provided topic.  Requirements: * Keep the content concise with minimal to medium length * Start with a strong hook * Maintain a professional yet human tone * Include practical insight, opinion, or value * Use simple and impactful language * Add relevant hashtags at the end * Avoid unnecessary emojis and filler content * Output only the final LinkedIn post without explanations, titles, quotation marks, or extra characters * strictly avoid  characters like '*'"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.googleGemini",
+      "typeVersion": 1.2,
+      "position": [
+        608,
+        0
+      ],
+      "id": "94da5964-d170-4ab6-a427-e220fe38cd32",
+      "name": "Generate a content",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "83mihy0OJz0Q9Ns1",
+          "name": "Valeed Gemini2"
+        }
+      }
+    }
+  ],
+  "pinData": {
+    "Daily 10 am": [
+      {
+        "json": {
+          "timestamp": "2026-06-26T21:29:53.179+05:30",
+          "Readable date": "June 26th 2026, 9:29:53 pm",
+          "Readable time": "9:29:53 pm",
+          "Day of week": "Friday",
+          "Year": "2026",
+          "Month": "June",
+          "Day of month": "26",
+          "Hour": "21",
+          "Minute": "29",
+          "Second": "53",
+          "Timezone": "Asia/Calcutta (UTC+05:30)"
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ],
+    "Message a model": [
+      {
+        "json": {
+          "content": {
+            "parts": [
+              {
+                "text": "The Ethical and Regulatory Challenges of Generative AI for Synthetic Media"
+              }
+            ],
+            "role": "model"
+          },
+          "finishReason": "STOP",
+          "index": 0
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ]
+  },
+  "connections": {
+    "Daily 10 am": {
+      "main": [
+        [
+          {
+            "node": "Message a model",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Message a model": {
+      "main": [
+        [
+          {
+            "node": "Generate a content",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate a content": {
+      "main": [
+        [
+          {
+            "node": "Create a post",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "d302423f-4d8f-4bf1-b998-57b5b5cc6213",
+  "meta": {
+    "instanceId": "ea6d255ed3939b13433eb23e95c02a509dea8b96f79d8e4700fee58f56fa2df4"
+  },
+  "nodeGroups": [],
+  "id": "a3ozwCbnIFi9tRFW",
+  "tags": []
+}
