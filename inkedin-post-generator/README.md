@@ -23,8 +23,9 @@ To use this workflow, you need:
 
 ## 🔧 Installation & Configuration
 1. **Import the Workflow:** Download the JSON file and import it into your n8n instance.
-2. **Set up Credentials:**
+       [Download Blueprint](linkedin-post-generator)
+3. **Set up Credentials:**
    * Configure Google PaLM API credentials for *both* AI nodes.
    * Configure LinkedIn OAuth2 API credentials for the posting node.
-3. **Update your LinkedIn Profile ID:** In the "Create a post" node, you **must** change the `person` field to your own specific LinkedIn profile ID (URN ID). 
-4. **Activate the Workflow:** Toggle the workflow to "Active".
+4. **Update your LinkedIn Profile ID:** In the "Create a post" node, you **must** change the `person` field to your own specific LinkedIn profile ID (URN ID). 
+5. **Activate the Workflow:** Toggle the workflow to "Active".
