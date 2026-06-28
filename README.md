@@ -68,7 +68,6 @@ This repository is released under the MIT License.
 No-Code AI Architect & Automation Strategist
 
 - LinkedIn: https://linkedin.com/in/sadeedameen
-- Website: https://www.msquare.pro
 
 ---
 
