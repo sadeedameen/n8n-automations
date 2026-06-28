@@ -1,5 +1,3 @@
-# n8n-automations
-
 # n8n Automations
 
 A curated collection of production-ready **n8n automation workflows** built for real-world business use cases.
