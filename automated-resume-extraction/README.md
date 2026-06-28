@@ -22,8 +22,8 @@ To use this workflow in your own n8n instance, you will need:
 
 ## Installation & Configuration
 
-1. **Import the Workflow:** Download the JSON file from this repository and import it into your n8n instance.
-       [Download Blueprint](resume-extraction.json)
+1. **Import the Workflow:** Download the JSON file from this repository and import it into your n8n instance.  
+        [Download Blueprint](automated-resume-extraction.json)
 3. **Set up Credentials:** Open the workflow and configure the credentials for the following nodes:
    * *Gmail Trigger* (Gmail OAuth2)
    * *Analyze document* (Google Gemini/PaLM API)
