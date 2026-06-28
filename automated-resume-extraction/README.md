@@ -23,9 +23,10 @@ To use this workflow in your own n8n instance, you will need:
 ## Installation & Configuration
 
 1. **Import the Workflow:** Download the JSON file from this repository and import it into your n8n instance.
-2. **Set up Credentials:** Open the workflow and configure the credentials for the following nodes:
+       [Download Blueprint](resume-extraction.json)
+3. **Set up Credentials:** Open the workflow and configure the credentials for the following nodes:
    * *Gmail Trigger* (Gmail OAuth2)
    * *Analyze document* (Google Gemini/PaLM API)
    * *Append row in sheet* (Google Sheets OAuth2)
-3. **Update the Google Sheet ID:** In the **"Append row in sheet"** node, update the Document ID to point to your own Google Spreadsheet.
-4. **Activate the Workflow:** Toggle the workflow to "Active" in n8n.
+4. **Update the Google Sheet ID:** In the **"Append row in sheet"** node, update the Document ID to point to your own Google Spreadsheet.
+5. **Activate the Workflow:** Toggle the workflow to "Active" in n8n.
